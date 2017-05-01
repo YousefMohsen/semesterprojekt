@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import './SearchField.css';
+import FlightStore from '../Stores/FlightStore';
 
 class SearchFile extends Component {
     constructor() {
@@ -15,17 +16,15 @@ console.log("heeej");
     buttonClicked(){
         alert("hej");
         console.log("testsd");
+
     }
     render() {
 
         return (
             <div>
-                <button type="button" onclick={this.buttonClicked}>Search</button>
+                <button type="button"  onClick={this.buttonClicked}>Search</button>
 
 
-                <p>
-
-                </p>
             </div>
         );
     }
