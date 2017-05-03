@@ -2,8 +2,9 @@
  * Created by You7inho on 01/05/2017.
  */
 import React, { Component } from 'react';
+//import {observer} from 'mobx-react';
+import flightStore from '../Stores/FlightStore';
 import './SearchField.css';
-import FlightStore from '../Stores/FlightStore';
 
 class SearchFile extends Component {
     constructor() {
@@ -14,8 +15,9 @@ console.log("heeej");
     }
 
     buttonClicked(){
-        alert("hej");
         console.log("testsd");
+        console.log(flightStore.getData());
+        console.log(flightStore.flights.slice());
 
     }
     render() {
@@ -24,7 +26,15 @@ console.log("heeej");
             <div>
                 <button type="button"  onClick={this.buttonClicked}>Search</button>
 
+                <div className="flightsContainer">
 
+                    <div className="flightBox">
+
+
+                        dgf
+                    </div>
+
+                </div>
             </div>
         );
     }
