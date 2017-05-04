@@ -42,21 +42,57 @@ var dumbFlights = [ {
         "destination": "SXF",
         "flightNumber": "COL2214"
     }];
+var dumbFlights1 =  [ {
+    "flightID": "3256-1493733600000",
+    "numberOfSeats": 1,
+    "date": "2017-05-02T10:00:00.000Z",
+    "totalPrice": 65,
+    "traveltime": 90,
+    "origin": "CPH",
+    "destination": "BCN",
+    "flightNumber": "COL3256"
+}];
 class FlightsStore {
 
+ @observable Flights =[];
+     newDate="";
+    newDestination="";
 
- @observable flights =[];
 
     constructor() {
-        this.getData();
+        this.testMethod();
     }
 
 
+
+setDate(date){
+        this.newDate = date+"T00:00:00.000Z";
+        console.log("date sat: " +this.newDate);
+}
+setDestination(dest){
+
+    this.newDestination = dest;
+    console.log("dest sat: " +this.newDestination);
+
+}
+
+search(){
+    if(this.newDate.length>0){this.getFlightByDate(this.newDate)}
+    else if(this.newDestination.length>0){this.getFlightByDestanation(this.newDestination)}
+    else {this.getAllFlights()}
+
+
+}
 @action
     getData(){
-    this.flights = dumbFlights;
+    this.Flights = dumbFlights;
 
     }
+@action
+testMethod(){
+this.Flights = dumbFlights1;
+
+}
 
     @action
     getAllFlights(){  //janus
@@ -74,6 +110,10 @@ class FlightsStore {
 
 
 
+
+
+
     }
 }
 export default new FlightsStore();
+//2017-05-18T00:00:00.000Z
