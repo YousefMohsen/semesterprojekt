@@ -1,2 +1,11 @@
 semesterprojekt/node_modules
 semesterprojekt/.idea/workspace.xml
+
+
+
+# production
+semesterprojekt/build
+
+# misc
+semesterprojekt/.DS_Store
+semesterprojekt/npm-debug.log
