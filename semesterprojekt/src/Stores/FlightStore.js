@@ -2,8 +2,8 @@
  * Created by You7inho on 01/05/2017.
  */
 import  {observable, computed, action} from "mobx";
-import fetchHelper from "./fetchHelpers"
-const URL = 'www.airline-plaul.rhcloud.com/api/';
+import fetchHelper from "./fetchHelper"
+const URL = 'http://airline-plaul.rhcloud.com/';
 var dumbFlights = [{
     "flightID": "3256-1493733600000",
     "numberOfSeats": 1,
@@ -63,8 +63,17 @@ class FlightsStore {
 
     constructor() {
         this.testMethod();
+        this.getFlightByDestination("CPH");
     }
 
+    @action
+    setErrorMessage(err) {
+        this.errorMessage = err;
+    }
+    @action
+    setMessageFromServer(msg) {
+        this.messageFromServer = msg;
+    }
 
     setDate(date) {
         this.newDate = date + "T00:00:00.000Z";
@@ -117,27 +126,34 @@ class FlightsStore {
         let errorCode = 200;
         const options = fetchHelper.makeOptions("GET", false);
 
-
-        return fetch(URL + "api/flightinfo/" + destination +'/2017-03-04T00:00:00.000Z/1', options)
+        const exturl = URL + "api/flightinfo/" + destination +'/2017-03-04T00:00:00.000Z/1';
+        console.log(exturl);
+         fetch(exturl, {method: 'GET'})
             .then((res) => {
                 if (res.status > 200 || !res.ok) {
                     errorCode = res.status;
-                    console.log("error");
+                    console.log("error"+errorCode);
                 }
-                return res.json();
+                console.log("response: "+errorCode);
+
+
+                return res.text();
             })
             .then((res) => {
-                console.log("l 71");
-                if (errorCode !== 200) {
-                    throw new Error(`${res.error.message} (${res.error.code})`);
+            console.log("in second then");
+          if (errorCode !== 200) {
+              console.log("l 133");
+
+              throw new Error(`${res.error.message} (${res.error.code})`);
                 }
                 else {
 
-                    //console.log(res);
-
-                    //container = res;
-                    this.Flights = res;
+                    //
                     console.log(res);
+                    //container = res;
+                    //this.Flights = res;
+
+
 
                     //console.log(res.length);
                     this.setMessageFromServer(res.message);
@@ -153,6 +169,7 @@ class FlightsStore {
         //set tickets to 1
 
     }
+    /*
 
     @action
     getFlightByDate(date) { //janus
@@ -197,7 +214,7 @@ class FlightsStore {
         //set tickets to 1
 
 
-    }
+    }*/
 }
 
 export default new FlightsStore();
