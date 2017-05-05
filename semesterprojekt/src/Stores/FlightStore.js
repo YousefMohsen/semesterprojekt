@@ -1,8 +1,10 @@
 /**
  * Created by You7inho on 01/05/2017.
  */
-import  {observable, computed , action} from "mobx";
-var dumbFlights = [ {
+import  {observable, computed, action} from "mobx";
+import fetchHelper from "./fetchHelpers"
+const URL = require("../../package.json").serverURL;
+var dumbFlights = [{
     "flightID": "3256-1493733600000",
     "numberOfSeats": 1,
     "date": "2017-05-02T10:00:00.000Z",
@@ -42,7 +44,7 @@ var dumbFlights = [ {
         "destination": "SXF",
         "flightNumber": "COL2214"
     }];
-var dumbFlights1 =  [ {
+var dumbFlights1 = [{
     "flightID": "3256-1493733600000",
     "numberOfSeats": 1,
     "date": "2017-05-02T10:00:00.000Z",
@@ -54,9 +56,9 @@ var dumbFlights1 =  [ {
 }];
 class FlightsStore {
 
- @observable Flights =[];
-     newDate="";
-    newDestination="";
+    @observable Flights = [];
+    newDate = "";
+    newDestination = "";
 
 
     constructor() {
@@ -64,56 +66,139 @@ class FlightsStore {
     }
 
 
+    setDate(date) {
+        this.newDate = date + "T00:00:00.000Z";
+        console.log("date sat: " + this.newDate);
+    }
 
-setDate(date){
-        this.newDate = date+"T00:00:00.000Z";
-        console.log("date sat: " +this.newDate);
-}
-setDestination(dest){
+    setDestination(dest) {
 
-    this.newDestination = dest;
-    console.log("dest sat: " +this.newDestination);
-
-}
-
-search(){
-    if(this.newDate.length>0){this.getFlightByDate(this.newDate)}
-    else if(this.newDestination.length>0){this.getFlightByDestanation(this.newDestination)}
-    else {this.getAllFlights()}
-
-
-}
-@action
-    getData(){
-    this.Flights = dumbFlights;
+        this.newDestination = dest;
+        console.log("dest sat: " + this.newDestination);
 
     }
-@action
-testMethod(){
-this.Flights = dumbFlights1;
 
-}
+    search() {
+        if (this.newDate.length > 0) {
+            this.getFlightByDate(this.newDate)
+        }
+        else if (this.newDestination.length > 0) {
+            this.getFlightByDestination(this.newDestination)
+        }
+        else {
+            this.getAllFlights()
+        }
 
-    @action
-    getAllFlights(){  //janus
 
     }
-    @action
-    getFlightByDestanation(destination){ //janus
 
+    @action
+    getData() {
+        this.Flights = dumbFlights;
+
+    }
+
+    @action
+    testMethod() {
+        this.Flights = dumbFlights1;
+
+    }
+
+
+    @action
+    getAllFlights() {  //janus
+
+    }
+
+    @action
+    getFlightByDestination(destination) { //janus
+        this.errorMessage = "";
+        this.messageFromServer = "";
+        let errorCode = 200;
+        const options = fetchHelper.makeOptions("GET", false);
+
+
+        return fetch(URL + "api/flights/destinations/" + destination, options)
+            .then((res) => {
+                if (res.status > 200 || !res.ok) {
+                    errorCode = res.status;
+                    console.log("error");
+                }
+                return res.json();
+            })
+            .then((res) => {
+                console.log("l 71");
+                if (errorCode !== 200) {
+                    throw new Error(`${res.error.message} (${res.error.code})`);
+                }
+                else {
+
+                    //console.log(res);
+
+                    //container = res;
+                    this.Flights = res;
+                    console.log(res);
+
+                    //console.log(res.length);
+                    this.setMessageFromServer(res.message);
+                }
+            }).catch(err => {
+                //This is the only way (I have found) to veryfy server is not running
+                this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
+                console.log("exception");
+                console.log(this.errorMessage);
+                console.log(URL);
+
+            })
         //set tickets to 1
 
     }
+
     @action
-    getFlightByDate(date){ //janus
+    getFlightByDate(date) { //janus
+        this.errorMessage = "";
+        this.messageFromServer = "";
+        let errorCode = 200;
+        const options = fetchHelper.makeOptions("GET", false);
+
+
+        return fetch(URL + "api/flights/dates/" + date, options)
+            .then((res) => {
+                if (res.status > 200 || !res.ok) {
+                    errorCode = res.status;
+                    console.log("error");
+                }
+                return res.json();
+            })
+            .then((res) => {
+                console.log("l 71");
+                if (errorCode !== 200) {
+                    throw new Error(`${res.error.message} (${res.error.code})`);
+                }
+                else {
+
+                    //console.log(res);
+
+                    //container = res;
+                    this.Flights = res;
+                    console.log(res);
+
+                    //console.log(res.length);
+                    this.setMessageFromServer(res.message);
+                }
+            }).catch(err => {
+                //This is the only way (I have found) to veryfy server is not running
+                this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
+                console.log("exception");
+                console.log(this.errorMessage);
+                console.log(URL);
+
+            })
         //set tickets to 1
-
-
-
-
 
 
     }
 }
+
 export default new FlightsStore();
 //2017-05-18T00:00:00.000Z
