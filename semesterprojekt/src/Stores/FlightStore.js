@@ -3,7 +3,7 @@
  */
 import  {observable, computed, action} from "mobx";
 import fetchHelper from "./fetchHelpers"
-const URL = require("../../package.json").serverURL;
+const URL = 'www.airline-plaul.rhcloud.com/api/';
 var dumbFlights = [{
     "flightID": "3256-1493733600000",
     "numberOfSeats": 1,
@@ -118,7 +118,7 @@ class FlightsStore {
         const options = fetchHelper.makeOptions("GET", false);
 
 
-        return fetch(URL + "api/flights/destinations/" + destination, options)
+        return fetch(URL + "api/flightinfo/" + destination +'/2017-03-04T00:00:00.000Z/1', options)
             .then((res) => {
                 if (res.status > 200 || !res.ok) {
                     errorCode = res.status;
