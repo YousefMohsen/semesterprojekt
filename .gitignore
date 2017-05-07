@@ -9,9 +9,6 @@ semesterprojekt/build
 # misc
 semesterprojekt/.DS_Store
 semesterprojekt/npm-debug.log
-<<<<<<< HEAD
-/Backend/semesterprojectBAckend/target/
-=======
 
 
 
@@ -22,4 +19,3 @@ Backend/semesterprojectBAckend/nbbuild/
 Backend/semesterprojectBAckend/dist/
 Backend/semesterprojectBAckend/nbdist/
 Backend/semesterprojectBAckend/.nb-gradle/
->>>>>>> 183b7c2212da0fa5c09d58fa069df3e0a9a4ce21
