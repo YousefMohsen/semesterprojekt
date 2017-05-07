@@ -9,3 +9,13 @@ semesterprojekt/build
 # misc
 semesterprojekt/.DS_Store
 semesterprojekt/npm-debug.log
+
+
+
+### NetBeans ###
+Backend/semesterprojectBAckend/nbproject/private/
+Backend/semesterprojectBAckend/build/
+Backend/semesterprojectBAckend/nbbuild/
+Backend/semesterprojectBAckend/dist/
+Backend/semesterprojectBAckend/nbdist/
+Backend/semesterprojectBAckend/.nb-gradle/
