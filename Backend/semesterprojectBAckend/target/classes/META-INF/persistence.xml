@@ -3,6 +3,7 @@
   <persistence-unit name="pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entity.Booking</class>
+    <class>entity.Flight</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://138.68.93.230:3306/joyondo?zeroDateTimeBehavior=convertToNull"/>
