@@ -6,6 +6,7 @@ import React, {Component} from "react";
 import {observer} from "mobx-react";
 import "./Searchresult.css";
 import flightStore from "../../Stores/FlightStore";
+import TestFetch from "../../Stores/TestFetch";
 
 @observer
 
@@ -19,6 +20,9 @@ class Searchresult extends Component {
   console.log("hej fra constructor" + this.countryCodeToName("CPH"));
 
     this.renderResultList = this.renderResultList.bind(this);
+
+
+   TestFetch.data();
     }
 
 
