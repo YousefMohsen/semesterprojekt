@@ -14,19 +14,22 @@ import java.util.Random;
 public class OurAirline {
     
     public static String getDestination(){
-        int i = new Random().nextInt(4)+1;
+        int i = new Random().nextInt(5)+1;
         String retur = "";
         switch  (i){
-            case 1: retur = "Berlin";
+            case 1: retur = "SXF";
             break;
             
-            case 2: retur = "noget andet";
+            case 2: retur = "CPH";
             break;
             
-            case 3: retur = "3 eller noget";
+            case 3: retur = "STN";
             break;
             
-            case 4: retur = "fuck det her";
+            case 4: retur = "CDG";
+            break;
+            
+            case 5: retur = "BCN";
             break;
         }
         return retur;

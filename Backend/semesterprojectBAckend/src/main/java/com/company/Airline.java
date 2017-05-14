@@ -12,7 +12,7 @@ import java.util.List;
  * @author Janus
  */
 public class Airline {
-    public String url;
+    public String name;
     
     public List<Flight> flights;
 }
