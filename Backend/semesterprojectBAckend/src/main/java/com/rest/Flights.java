@@ -36,16 +36,14 @@ import java.util.function.Function;
  */
 @Path("flights")
 public class Flights {
-
-    @Context
-    private UriInfo context;
     
     private static Gson gson = new Gson();
     
-    List<String> airlines = Arrays.asList("pathtojensairline","nextairline");
+    //"https://airline.skaarup.io/api/flights/"
+    List<String> airlines = Arrays.asList("http://airline-plaul.rhcloud.com/api/flightinfo/");
     
     
-    private static Airline flyer (String airline){
+    public static Airline flyer (String airline){
         HttpsURLConnection conn = null;
         try {
             URL url = new URL(airline);
@@ -95,7 +93,7 @@ public class Flights {
         //make it multiple threads later
         //here make multithreading or what its called
         for (int i = 0; i <= airlines.size(); i++) {
-            outputs.add(flyer(airlines.get(i) + "flights/" + from + "/" + date + "/" + tickets));
+            outputs.add(flyer(airlines.get(i)+ from + "/" + date + "/" + tickets));
         }
                        
                        
@@ -117,7 +115,7 @@ public class Flights {
         //make it multiple threads later
         //here make multithreading or what its called
         for (int i = 0; i <= airlines.size(); i++) {
-            outputs.add(flyer(airlines.get(i) + "flights/" + from + "/" + to + "/" + date + "/" + tickets));
+            outputs.add(flyer(airlines.get(i) + from + "/" + to + "/" + date + "/" + tickets));
         }
                        
                        
