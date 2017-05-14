@@ -21,14 +21,19 @@ class SearchFile extends Component {
 
     buttonClicked(){
 
-flightStore.testMethod();
+        if(flightStore.newDate.length>0||flightStore.setDestination().length>0){
+            flightStore.getAllFlights();
+
+
+        } else{alert("Udfyld venligst alle felter")}
+
 
 /*this.setState({
     flights: flightStore.Flights.slice()
 });*/
-        console.log("testsd");
-        console.log(flightStore.getData());
-        console.log(flightStore.Flights.slice());
+     //   console.log("testsd");
+      //  console.log(flightStore.getData());
+        //console.log(flightStore.Flights.slice());
 
 
 
@@ -39,20 +44,29 @@ flightStore.testMethod();
 
      getDestination(event) {
     var value = event.target.value;
-         console.log("destination");
-
-    console.log(value);
+    //     console.log("destination");
+flightStore.setDestination(value);
+    //console.log(value);
 
      }
 
     getDate(evt) {
         var value = evt.target.value;
-        console.log("date");
+        //console.log("date");
 flightStore.setDate(value);
-        console.log(value);
+      //  console.log(value);
 
 
     }
+    getSeats(evt) {
+        var value = evt.target.value;
+        console.log("seats");
+       flightStore.setSeats(value);
+        //  console.log(value);
+
+
+    }
+
     render() {
 
         return (
@@ -62,7 +76,7 @@ flightStore.setDate(value);
 
 
 
-                <select className="destinationBox" onChange={this.getDestination}>
+                <select className="destinationBox " onChange={this.getDestination}>
                     <option value="" disabled="disabled" selected="selected">Please select a destination</option>
                     <option value="CPH">Copenhagen</option>
                     <option value="SXF">Berlin</option>
@@ -71,7 +85,10 @@ flightStore.setDate(value);
 
                     <option value="BCN">Barcelona</option>
                 </select>
+
                 <input className="dateBox" type="date" onChange={this.getDate} />
+                  <input type="text" className="destinationBox" value="1" onChange={this.getSeats}/>
+
                     <button type="button"  onClick={this.buttonClicked}>Search</button>
 
                 </div>

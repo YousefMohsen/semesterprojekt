@@ -22,7 +22,7 @@ class Searchresult extends Component {
     this.renderResultList = this.renderResultList.bind(this);
 
 
-   TestFetch.data();
+   TestFetch.constructor();
     }
 
 
@@ -53,6 +53,7 @@ class Searchresult extends Component {
     }
 
     renderResultList(flightsList){
+    //   console.log(flightsList);
 
         const result = flightsList.map(function(flight)  {
 
@@ -63,15 +64,15 @@ class Searchresult extends Component {
 
                 <div className="leftInfoBox">
                     <h1 className="resultBoxHeader">{ flight.origin} - {flight.destination}</h1>
-                    <h1 className="resultBoxInfo"> Date: {flight.date}</h1>
+                    <h1 className="resultBoxInfo"> Date: {flight.date.substring(0,10)}</h1>
                     <h1 className="resultBoxInfo">Traveltime: {flight.traveltime} hours</h1>
                     <h1 className="resultBoxInfo">Number of seats: {flight.numberOfSeats}</h1>
-                    <h1 className="resultBoxInfo">Depature: 07:00 </h1>
+                    <h1 className="resultBoxInfo">Depature time: {flight.date.substring(11,16)} </h1>
 
                 </div>
 
                 <div className="rightInfoBox">
-                    <h1 className="resultBoxHeader">3685 kr</h1>
+                    <h1 className="resultBoxHeader">{flight.totalPrice} $</h1>
                     <div className="bookButton" > Book</div>
 
 

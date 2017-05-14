@@ -1,0 +1,16 @@
+npm intalls:
+
+node_modules
+npm install 
+
+Axios:
+npm install axios ( ty again after runnning ,npm cache clean ,if you get an error )
+
+
+Mobx:
+https://swizec.com/blog/mobx-with-create-react-app/swizec/7158
+
+
+
+
+
