@@ -19,4 +19,16 @@ Backend/semesterprojectBAckend/nbbuild/
 Backend/semesterprojectBAckend/dist/
 Backend/semesterprojectBAckend/nbdist/
 Backend/semesterprojectBAckend/.nb-gradle/
-/Backend/AirlineBackend/Backend/target/
+Backend/AirlineBackend/Backend/target/
+
+
+### NetBeans ###
+
+Backend/AirlineBackend/Backend/nbproject/private/
+Backend/AirlineBackend/Backend/build/
+Backend/AirlineBackend/Backend/nbbuild/
+Backend/AirlineBackend/Backend/dist/
+Backend/AirlineBackend/Backend/nbdist/
+Backend/AirlineBackend/Backend/.nb-gradle/
+Backend/AirlineBackend/Backend/target/
+
