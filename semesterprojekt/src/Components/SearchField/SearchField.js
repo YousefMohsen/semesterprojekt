@@ -21,7 +21,7 @@ class SearchFile extends Component {
 
     buttonClicked(){
 
-        if(flightStore.newDate.length>0||flightStore.setDestination().length>0){
+        if(flightStore.newDate.length>0||flightStore.newDestination.length>0){
             flightStore.getAllFlights();
 
 

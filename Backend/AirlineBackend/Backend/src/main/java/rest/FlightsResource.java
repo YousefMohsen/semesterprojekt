@@ -5,11 +5,16 @@
  */
 package rest;
 
+import RandomData.FlightsCollector;
 import RandomData.RandomFlights;
 import com.google.gson.Gson;
+import entity.Airline;
 import entity.Flight;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -27,9 +32,10 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("flights")
 public class FlightsResource {
-    
+
     Gson gson = new Gson();
     RandomFlights rf = new RandomFlights();
+    FlightsCollector fc = new FlightsCollector();
 
     @Context
     private UriInfo context;
@@ -42,34 +48,53 @@ public class FlightsResource {
 
     /**
      * Retrieves representation of an instance of rest.FlightsResource
+     *
      * @return an instance of java.lang.String
      */
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() {
         //TODO return proper representation object  
-        return "hey there";  
+        return "hey there";
     }
+
     /**
      * Retrieves representation of an instance of com.rest.Flights
+     *
      * @return an instance of java.lang.String
      */
     @GET
     @Path("{from}/{date}/{seats}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getFlightsFrom(@PathParam("from") String from,
-                                            @PathParam("date") String date,
-                                            @PathParam("seats") int seats) {
+            @PathParam("date") String date,
+            @PathParam("seats") int seats) {
 
-     
-           
-                       
-        return gson.toJson(rf.getFlightsFrom(from,date, seats)); //  gson.toJson(outputs);
+        return gson.toJson(rf.getFlightsFrom(from, date, seats)); //  gson.toJson(outputs);
+    }
+
+    @GET
+    @Path("all/{from}/{date}/{seats}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getFlightsFromAll(@PathParam("from") String from,
+            @PathParam("date") String date,
+            @PathParam("seats") int seats) {
+        try {
+
+            String parameters = from + "/" + date + "/" + seats;
+
+            ArrayList<Airline> result = fc.fromAirlines(parameters);
+            return gson.toJson(result);
+
+        } catch (MalformedURLException ex) {
+            return "error";
+
+        }
     }
 
     /**
      * PUT method for updating or creating an instance of FlightsResource
+     *
      * @param content representation for the resource
      */
     @PUT

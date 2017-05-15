@@ -23,7 +23,7 @@ class FlightsStore {
     newSeats = 1;
 
     constructor() {
-        this.testMethod();
+    //    this.testMethod();
         //this.getFlightByDestination("CPH");
 
     }

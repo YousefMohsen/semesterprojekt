@@ -5,6 +5,7 @@
  */
 package RandomData;
 
+import entity.Airline;
 import entity.Flight;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,7 +16,7 @@ import java.util.Random;
  */
 public class RandomFlights {
     String[] airports = new String[5];
-
+    String airlineName = "Yojondo airline";
     public RandomFlights() {
         initData();
     }
@@ -36,8 +37,9 @@ public class RandomFlights {
     }
     
     
-        public ArrayList<Flight> getFlightsFrom(String from, String date, int seats){
-        ArrayList<Flight> al = new ArrayList<Flight>();
+        public Airline getFlightsFrom(String from, String date, int seats){
+        ArrayList<Flight> flightsList = new ArrayList<Flight>();
+        
         int amount = new Random().nextInt(5)+1;
         for (int i = 0; i <= amount; i++) {
             Flight fl = new Flight();
@@ -49,9 +51,9 @@ public class RandomFlights {
             fl.setTotalPrice(new Random().nextInt(50)+20);
             fl.setTraveltime(new Random().nextInt(24)+1);
             fl.setDestination(getDestination());
-            al.add(fl);
+            flightsList.add(fl);
         }
-        return al;
+        return new Airline(airlineName,flightsList);
     }
     
     
