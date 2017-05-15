@@ -17,8 +17,8 @@ class App extends Component {
 
         </p>
           <SearchField/>
-
           <Searchresult/>
+
       </div>
     );
   }

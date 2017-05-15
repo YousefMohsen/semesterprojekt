@@ -3,18 +3,8 @@
  */
 import  {observable, computed, action} from "mobx";
 import fetchHelper from "./fetchHelper"
-const URL = 'http://localhost:8084/Backend/api/flights';
-var dumbFlights =[{"flightID":"Id14501","flightNumber":"Flight8781","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":36,"traveltime":64,"origin":"BCN","destination":"SXF"},{"flightID":"Id5691","flightNumber":"Flight931","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":52,"traveltime":173,"origin":"BCN","destination":"CPH"},{"flightID":"Id5071","flightNumber":"Flight131","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":25,"traveltime":152,"origin":"BCN","destination":"STN"},{"flightID":"Id12491","flightNumber":"Flight14901","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":39,"traveltime":134,"origin":"BCN","destination":"CPH"},{"flightID":"Id10511","flightNumber":"Flight11711","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":57,"traveltime":61,"origin":"BCN","destination":"CDG"},{"flightID":"Id3451","flightNumber":"Flight7241","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":40,"traveltime":102,"origin":"BCN","destination":"CDG"}];
-var dumbFlights1 = [{
-    "flightID": "3256-1493733600000",
-    "numberOfSeats": 1,
-    "date": "2017-05-02T10:00:00.000Z",
-    "totalPrice": 65,
-    "traveltime": 90,
-    "origin": "CPH",
-    "destination": "BCN",
-    "flightNumber": "COL3256"
-}];
+const URL = 'http://localhost:8084/Backend/api/flights/all';
+var dumbFlights = [{"airline":"Yojondo airline","flights":[{"flightID":"Id14581","flightNumber":"Flight1951","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":40,"traveltime":23,"origin":"STN","destination":"CDG"},{"flightID":"Id12731","flightNumber":"Flight19751","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":48,"traveltime":24,"origin":"STN","destination":"CDG"},{"flightID":"Id8791","flightNumber":"Flight18111","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":50,"traveltime":5,"origin":"STN","destination":"CPH"},{"flightID":"Id12431","flightNumber":"Flight5631","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":58,"traveltime":15,"origin":"STN","destination":"BCN"},{"flightID":"Id4831","flightNumber":"Flight641","date":"2017-05-18T00:00:00.000Z","numberOfSeats":10,"totalPrice":52,"traveltime":24,"origin":"STN","destination":"CPH"}]},{"airline":"AngularJS Airline","flights":[{"flightID":"3257-1495157400000","flightNumber":"COL3257","date":"2017-05-18T21:30:00.000Z","numberOfSeats":10,"totalPrice":600.0,"traveltime":90,"origin":"STN","destination":"CPH"},{"flightID":"3257-1495081800000","flightNumber":"COL3257","date":"2017-05-18T00:30:00.000Z","numberOfSeats":10,"totalPrice":750.0,"traveltime":90,"origin":"STN","destination":"CPH"}]}];
 class FlightsStore {
 
     @observable Flights = [];
@@ -23,7 +13,7 @@ class FlightsStore {
     newSeats = 1;
 
     constructor() {
-    //    this.testMethod();
+       this.testMethod();
         //this.getFlightByDestination("CPH");
 
     }
@@ -66,16 +56,11 @@ class FlightsStore {
 
     }
 
-    @action
-    getData() {
-        this.Flights = dumbFlights;
-
-    }
 
     @action
     testMethod() {
-        this.Flights = dumbFlights1;
-
+        this.Flights = dumbFlights;
+console.log(this.Flights.slice());
     }
 
 

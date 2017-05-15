@@ -19,10 +19,13 @@ class Searchresult extends Component {
 
   console.log("hej fra constructor" + this.countryCodeToName("CPH"));
 
-    this.renderResultList = this.renderResultList.bind(this);
+    this.renderFlightList = this.renderFlightList.bind(this);
+
+       this.renderResult = this.renderResult.bind(this);
 
 
-   TestFetch.constructor();
+
+       TestFetch.constructor();
     }
 
 
@@ -52,8 +55,8 @@ class Searchresult extends Component {
 
     }
 
-    renderResultList(flightsList){
-    //   console.log(flightsList);
+    renderFlightList(airlineName, flightsList){
+      console.log(flightsList);
 
         const result = flightsList.map(function(flight)  {
 
@@ -68,6 +71,8 @@ class Searchresult extends Component {
                     <h1 className="resultBoxInfo">Traveltime: {flight.traveltime} hours</h1>
                     <h1 className="resultBoxInfo">Number of seats: {flight.numberOfSeats}</h1>
                     <h1 className="resultBoxInfo">Depature time: {flight.date.substring(11,16)} </h1>
+                    <h1 className="resultBoxInfo">Airline: {airlineName} </h1>
+
 
                 </div>
 
@@ -83,23 +88,45 @@ class Searchresult extends Component {
         return result;
 
     }
+testH1(name,list){
+
+
+}
+    renderResult(airlineList){
+
+
+        const result = airlineList.map((a) => {
+       return this.renderFlightList(a.airline,a.flights.slice())}
+
+
+            )
+        //
+
+ return result;
+
+    }
 
 
 
 
     render() {
-        //const test = <h1>hej med dig</h1>  ;
-const flightsL = flightStore.Flights.slice();
 
-     const resultList = this.renderResultList(flightsL);
-      // console.log(resultList);
+        //const test = <h1>hej med dig</h1>  ;
+
+       const flights = flightStore.Flights.slice();
+        console.log(flights);
+
+        const resultList = this.renderResult(flights);
 
 
 
         return (
+
             <div className="resultcontainer">
-<p>{flightsL.length} flight(s) found</p>
+
                 {resultList}
+
+
             </div>
         );
     }
@@ -109,5 +136,7 @@ export default Searchresult;
 
 //               <img  src={'../../Images/bookButton.png'}  />
 /*
-
+ <h1>{flights[0].airline}</h1>
+ return this.renderResultList(a.airline, a.flights.slice());}
+ <p>{flights.length} flight(s) found</p>
  */
