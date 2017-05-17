@@ -1,3 +1,68 @@
+.searchFieldContainer{
+
+
+
+width: 100%;
+    margin: auto;
+    padding: 30px 0px;
+    background-color: darkslateblue;
+    margin-bottom: 50px;
+}
+
+
+
+.searchfield{
+display: inline-block;
+margin: 0px 5px;
+
+}
+
+
+
+.searchfieldElement{
+
+    display: block;
+    text-align: left;
+    color: white;
+}
+
+.searchfield select{
+    color: black;
+}
+
+
+.searchButton{
+
+
+    background-color: white;
+padding: 5px;
+    border-radius: 80%;
+    -webkit-box-shadow: 0px 0px 152px 0px rgba(0,0,0,0.46);
+    -moz-box-shadow: 0px 0px 152px 0px rgba(0,0,0,0.46);
+    box-shadow: 0px 0px 152px 0px rgba(0,0,0,0.46);
+
+}
+
+
+.searchButton:hover{
+    transform: scale(1, 2);
+    -moz-transform: scale(1, 2);
+    -ms-transform: scale(1, 2);
+    -webkit-transform: scale(1.1, 1.1);
+    -o-transform: scale(1, 2);
+}
+
+.searchButton p{
+
+    color: darkslateblue;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.5rem;
+
+
+}
+
+
+
 .flightsContainer{
 
     width: 90%;

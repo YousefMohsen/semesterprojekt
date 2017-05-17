@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './Images/YJLogo.png';
 import './App.css';
 import Searchresult from './Components/Searchresult/Searchresult'
 import SearchField from './Components/SearchField/SearchField'
@@ -11,13 +11,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to Yojondo</h2>
-        </div>
-        <p className="App-intro">
+            <img src={logo} className="App-logo" alt="logo" />
 
-        </p>
+            <h2>Welcome to Yojondo</h2>
+        </div>
+
+          <div className="contentStart">
           <SearchField/>
           <Searchresult/>
+
+
+          </div>
 
       </div>
     );

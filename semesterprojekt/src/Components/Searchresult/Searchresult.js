@@ -58,7 +58,7 @@ class Searchresult extends Component {
     renderFlightList(airlineName, flightsList){
       console.log(flightsList);
 
-        const result = flightsList.map(function(flight)  {
+        const result = flightsList.map((flight) => {
 
 
 
@@ -66,7 +66,7 @@ class Searchresult extends Component {
 
 
                 <div className="leftInfoBox">
-                    <h1 className="resultBoxHeader">{ flight.origin} - {flight.destination}</h1>
+                    <h1 className="resultBoxHeader">{ this.countryCodeToName( flight.origin)} -  {this.countryCodeToName( flight.destination)}</h1>
                     <h1 className="resultBoxInfo"> Date: {flight.date.substring(0,10)}</h1>
                     <h1 className="resultBoxInfo">Traveltime: {flight.traveltime} hours</h1>
                     <h1 className="resultBoxInfo">Number of seats: {flight.numberOfSeats}</h1>

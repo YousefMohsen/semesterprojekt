@@ -39,6 +39,9 @@ public class FlightsCollector {
 
         airlineAddresses.add("http://airline-plaul.rhcloud.com/api/flightinfo/");
         airlineAddresses.add("http://localhost:8084/Backend/api/flights/");
+        airlineAddresses.add("http://airline.skaarup.io/api/flights/");
+
+        
 
         //additional airlines here
 

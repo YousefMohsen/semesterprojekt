@@ -25,6 +25,12 @@ public class Main {
    FlightsCollector fc = new FlightsCollector();
    
    
+   
+        for (int i = 0; i < 10; i++) {
+            System.out.println(rf.getDestination());
+        }
+  /*S 
+   
 Runnable task2 = () -> { while(true){ System.out.println("Task #2 is running"+Thread.activeCount()); }};
 
 
@@ -43,5 +49,12 @@ t.start();
             System.out.println("Exception "+ex.getMessage());
         }
         t.stop();
+
+
+*/
+
     }
+
+
+
 }

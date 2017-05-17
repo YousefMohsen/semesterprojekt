@@ -29,7 +29,7 @@ public class RandomFlights {
     airports[4] = "BCN";
     }
     
-        private  String getDestination(){
+        public  String getDestination(){
         int i = new Random().nextInt(5);
       
 
@@ -39,9 +39,10 @@ public class RandomFlights {
     
         public Airline getFlightsFrom(String from, String date, int seats){
         ArrayList<Flight> flightsList = new ArrayList<Flight>();
-        
-        int amount = new Random().nextInt(5)+1;
+        int amount = new Random().nextInt(10)+1;
         for (int i = 0; i <= amount; i++) {
+                    String dest = getDestination();
+
             Flight fl = new Flight();
             fl.setFlightID("Id"+new Random().nextInt(1500)+1);
             fl.setFlightNumber("Flight"+new Random().nextInt(2000)+1);
@@ -50,7 +51,12 @@ public class RandomFlights {
             fl.setNumberOfSeats(seats);
             fl.setTotalPrice(new Random().nextInt(50)+20);
             fl.setTraveltime(new Random().nextInt(24)+1);
-            fl.setDestination(getDestination());
+           
+            while( dest.equals(from)){
+            dest = getDestination();}
+            
+            
+            fl.setDestination(dest);
             flightsList.add(fl);
         }
         return new Airline(airlineName,flightsList);
