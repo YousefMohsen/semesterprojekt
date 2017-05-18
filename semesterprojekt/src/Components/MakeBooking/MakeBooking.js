@@ -39,7 +39,7 @@ class MakeBooking extends Component {
                         </div>
                         <div className="modal-body">
                             <div className="myForm">
-                                <form action="/action_page.php">
+                                <form action="http://localhost:8084/Backend/api/flights/booking" method="post">
 
                                     <label className="formFieldElement">Full name</label>
                                     <input name="name" className="formFieldElement" type="text" placeholder="fullname"/>

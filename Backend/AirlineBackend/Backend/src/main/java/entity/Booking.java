@@ -6,49 +6,29 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Yousef Mohsen
  */
-public class Airline implements Serializable {
+public class Booking implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-private String airline;//name
 
-    private ArrayList<Flight> flights;
-
-    public Airline() {
+    public Booking() {
     }
 
-    public Airline(String airline, ArrayList<Flight> flights) {
-        this.airline = airline;
-        this.flights = flights;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
     public Integer getId() {
         return id;
     }
@@ -56,24 +36,6 @@ private String airline;//name
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getAirline() {
-        return airline;
-    }
-
-    public void setAirline(String airline) {
-        this.airline = airline;
-    }
-
-    public ArrayList<Flight> getFlights() {
-        return flights;
-    }
-
-    public void setFlights(ArrayList<Flight> flights) {
-        this.flights = flights;
-    }
-    
-    
 
     @Override
     public int hashCode() {
@@ -85,10 +47,10 @@ private String airline;//name
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Airline)) {
+        if (!(object instanceof Booking)) {
             return false;
         }
-        Airline other = (Airline) object;
+        Booking other = (Booking) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -97,7 +59,7 @@ private String airline;//name
 
     @Override
     public String toString() {
-        return "entity.Airline[ id=" + id + " ]";
+        return "entity.Booking[ id=" + id + " ]";
     }
     
 }

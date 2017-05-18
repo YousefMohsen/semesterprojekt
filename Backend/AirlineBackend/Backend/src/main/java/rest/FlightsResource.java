@@ -5,11 +5,14 @@
  */
 package rest;
 
+import Facades.BookingFacade;
 import RandomData.FlightsCollector;
 import RandomData.RandomFlights;
 import com.google.gson.Gson;
 import entity.Airline;
+import entity.Booking;
 import entity.Flight;
+import entity.Person;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +22,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.POST;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -34,6 +41,7 @@ import javax.ws.rs.core.MediaType;
 public class FlightsResource {
 
     Gson gson = new Gson();
+    BookingFacade bf = new BookingFacade();
     RandomFlights rf = new RandomFlights();
     FlightsCollector fc = new FlightsCollector();
 
@@ -90,6 +98,24 @@ public class FlightsResource {
             return "error";
 
         }
+    }
+
+    @POST
+    @Path("/booking")
+    public Response addUser( //change type to Response to improve the quality of the program: 
+            @FormParam("name") String name,
+            @FormParam("email") String email,
+            @FormParam("phone") String phone) {
+            
+
+   Person nPerson = new Person(name, phone, email); 
+//     Booking nBooking = new Booking(nPerson,null);   //add flight later    
+  bf.addNewBookingDemo(nPerson);//change return type to boolean, and modify it with the response status, so it returns error code if failed to persist
+//     
+     
+      return  Response.status(200)
+                .entity("new booking is called, name : " + name + ", email : " + email + " phone "+phone)
+                .build();
     }
 
     /**

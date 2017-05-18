@@ -35,13 +35,10 @@ public class RandomFlights {
 
         return airports[i];
     }
-    
-    
-        public Airline getFlightsFrom(String from, String date, int seats){
-        ArrayList<Flight> flightsList = new ArrayList<Flight>();
-        int amount = new Random().nextInt(6)+1;
-        for (int i = 0; i <= amount; i++) {
-                    String dest = getDestination();
+        
+        
+        public Flight getRandomFlight(String from, String date, int seats){
+              String dest = getDestination();
 
             Flight fl = new Flight();
             fl.setFlightID("Id"+new Random().nextInt(1500)+1);
@@ -57,7 +54,18 @@ public class RandomFlights {
             
             
             fl.setDestination(dest);
-            flightsList.add(fl);
+        
+        
+        return fl;
+        }
+    
+    
+        public Airline getFlightsFrom(String from, String date, int seats){
+        ArrayList<Flight> flightsList = new ArrayList<Flight>();
+        int amount = new Random().nextInt(6)+1;
+        for (int i = 0; i <= amount; i++) {
+              
+            flightsList.add(getRandomFlight(from,date,seats));
         }
         return new Airline(airlineName,flightsList);
     }

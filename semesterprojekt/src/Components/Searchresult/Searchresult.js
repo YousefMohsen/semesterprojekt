@@ -32,7 +32,7 @@ class Searchresult extends Component {
 
        TestFetch.constructor();
     }
-
+ test1 = "hej";
 
     countryCodeToName(code){
 
@@ -120,8 +120,8 @@ testH1(name,list){
          console.log(this.refs.myDiv.getAttribute('class'));
 
          */
+
         const modal = this.refs.myModal;
-console.log(modal.getAttribute("class"));
         modal.style.display = "block";
 
     }

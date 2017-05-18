@@ -1,12 +1,18 @@
 
+import Facades.BookingFacade;
 import RandomData.FlightsCollector;
 import RandomData.RandomFlights;
 import entity.Airline;
+import entity.Booking;
 import entity.Flight;
+import entity.Person;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,15 +26,27 @@ import java.util.logging.Logger;
  */
 public class Main {
     public static void main(String[] args) {
-        RandomFlights rf = new RandomFlights();
+ BookingFacade bf = new BookingFacade();
+ RandomFlights rf = new RandomFlights();
+   
+ 
+     
+         Person nPerson = new Person("testName", "testPhone", "testEmail"); 
+//     Booking nBooking = new Booking(nPerson,rf.getRandomFlight("BCN", "2017-05-18T00:00:00.000Z", 1));   //add flight later    
+     bf.addNewBookingDemo(nPerson);//change return type to boolean, and modify it with the response status, so it returns error code if failed to persist
+//     
+     
         
-   FlightsCollector fc = new FlightsCollector();
-   
-   
-   
-        for (int i = 0; i < 10; i++) {
-            System.out.println(rf.getDestination());
-        }
+//        
+//       
+//        
+//   FlightsCollector fc = new FlightsCollector();
+//   
+//   
+//   
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println(rf.getDestination());
+//        }
   /*S 
    
 Runnable task2 = () -> { while(true){ System.out.println("Task #2 is running"+Thread.activeCount()); }};
