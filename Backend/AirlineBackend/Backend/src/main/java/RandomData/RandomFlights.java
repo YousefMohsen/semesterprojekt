@@ -39,7 +39,7 @@ public class RandomFlights {
     
         public Airline getFlightsFrom(String from, String date, int seats){
         ArrayList<Flight> flightsList = new ArrayList<Flight>();
-        int amount = new Random().nextInt(10)+1;
+        int amount = new Random().nextInt(6)+1;
         for (int i = 0; i <= amount; i++) {
                     String dest = getDestination();
 

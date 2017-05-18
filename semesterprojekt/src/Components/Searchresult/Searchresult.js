@@ -7,6 +7,7 @@ import {observer} from "mobx-react";
 import "./Searchresult.css";
 import flightStore from "../../Stores/FlightStore";
 import TestFetch from "../../Stores/TestFetch";
+import MakeBooking from "../MakeBooking/MakeBooking"
 
 @observer
 
@@ -22,6 +23,10 @@ class Searchresult extends Component {
     this.renderFlightList = this.renderFlightList.bind(this);
 
        this.renderResult = this.renderResult.bind(this);
+       this.showModal = this.showModal.bind(this);
+       this.hideModal = this.hideModal.bind(this)
+
+
 
 
 
@@ -78,11 +83,14 @@ class Searchresult extends Component {
 
                 <div className="rightInfoBox">
                     <h1 className="resultBoxHeader">{flight.totalPrice} $</h1>
-                    <div className="bookButton" > Book</div>
+                    <div className="bookButton" onClick={this.showModal}> <label>Book</label></div>
 
 
 
                 </div>
+
+
+
             </div>
         });
         return result;
@@ -106,6 +114,24 @@ testH1(name,list){
 
     }
 
+    showModal () {
+        /*
+
+         console.log(this.refs.myDiv.getAttribute('class'));
+
+         */
+        const modal = this.refs.myModal;
+console.log(modal.getAttribute("class"));
+        modal.style.display = "block";
+
+    }
+
+
+    hideModal(){
+        const modal = this.refs.myModal;
+        modal.style.display = "none";
+        console.log("modal");
+    }
 
 
 
@@ -125,8 +151,9 @@ testH1(name,list){
             <div className="resultcontainer">
 
                 {resultList}
-
-
+                <div  className="modal"  id="myModal" ref="myModal">
+                <MakeBooking hideModalTest={this.hideModal}/>
+                </div>
             </div>
         );
     }

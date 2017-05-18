@@ -13,7 +13,7 @@ class App extends Component {
         <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
 
-            <h2>Welcome to Yojondo</h2>
+            <h2>More than a trip..</h2>
         </div>
 
           <div className="contentStart">

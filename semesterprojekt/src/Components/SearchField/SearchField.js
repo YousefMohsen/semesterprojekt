@@ -25,7 +25,7 @@ class SearchFile extends Component {
             flightStore.getAllFlights();
 
 
-        } else{alert("Udfyld venligst alle felter")}
+        } else{alert("Please fill all fields")}
 
 
 /*this.setState({
@@ -67,6 +67,10 @@ flightStore.setDate(value);
 
     }
 
+
+
+
+
     render() {
 
         return (
@@ -104,7 +108,7 @@ flightStore.setDate(value);
                     </div>
 
 
-                    <div className="searchButton searchfield"  onClick={this.buttonClicked}> <p>Search</p></div>
+                    <div className="searchButton searchfield"  onClick={this.buttonClicked}> <label>Search</label></div>
                 </div>
 
 
