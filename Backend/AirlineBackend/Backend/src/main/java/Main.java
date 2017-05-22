@@ -31,12 +31,14 @@ public class Main {
    
  
      
-         Person nPerson = new Person("testName", "testPhone", "testEmail"); 
+     //    Person nPerson = new Person("testName", "testPhone", "testEmail"); 
 //     Booking nBooking = new Booking(nPerson,rf.getRandomFlight("BCN", "2017-05-18T00:00:00.000Z", 1));   //add flight later    
-     bf.addNewBookingDemo(nPerson);//change return type to boolean, and modify it with the response status, so it returns error code if failed to persist
+   //  bf.addNewBookingDemo(nPerson);//change return type to boolean, and modify it with the response status, so it returns error code if failed to persist
+        System.out.println("person id "+bf.getPerson(201).getFullName());
+
 //     
      
-        
+     //bf.getBookDemo();
 //        
 //       
 //        

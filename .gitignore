@@ -32,3 +32,4 @@ Backend/AirlineBackend/Backend/nbdist/
 Backend/AirlineBackend/Backend/.nb-gradle/
 Backend/AirlineBackend/Backend/target/
 
+/Backend/AirlineBackend/Backend/nbproject/

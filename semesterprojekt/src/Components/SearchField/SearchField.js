@@ -104,7 +104,7 @@ flightStore.setDate(value);
                     <div className="searchfield">
                         <label className="searchfieldElement">Seats</label>
 
-                    <input type="text" className="searchfield" value="1" onChange={this.getSeats}/>
+                    <input type="text" className="searchfield" onChange={this.getSeats}/>
                     </div>
 
 
